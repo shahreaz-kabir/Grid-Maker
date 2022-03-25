@@ -40,6 +40,13 @@ function removeR() {
 
 // Remove a column
 function removeC() {
+    let table = document.getElementById("grid");
+    for (let i = 0; i < numRows; i++) {
+        table.rows[i].deleteCell(0);
+        //table.insertRow(-1);
+    }
+    numCols--;
+    console.log(numCols);
   
 }
 
