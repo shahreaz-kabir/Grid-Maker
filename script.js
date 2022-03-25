@@ -33,7 +33,9 @@ function addC() {
 
 // Remove a row
 function removeR() {
-    
+    let table = document.getElementById("grid");
+    table.deleteRow(0);
+    numRows--;   
 }
 
 // Remove a column
