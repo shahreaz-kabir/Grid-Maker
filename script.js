@@ -4,7 +4,13 @@ let numCols = 0;
 let colorSelected; 
 
 
-
+function addOnclick() {
+    Array.from(document.getElementsByTagName("td")).forEach(e => {
+        e.onclick = function() {
+            clickColor();
+        }
+    });
+}
 
 // Add a row
 function addR() {
@@ -86,21 +92,9 @@ function clearAll(){
     }); 
 }
 
-
-
-/*
 function clickColor(){
     Array.from(document.getElementsByTagName("td")).forEach(e => {
         e.onclick = function() {e.style.backgroundColor = selectColor()};
     }); 
 }
 
-function addOnclick() {
-    Array.from(document.getElementsByTagName("td")).forEach(e => {
-        e.onclick = function() {
-            clickColor();
-        }
-    });
-}
-
-*/
