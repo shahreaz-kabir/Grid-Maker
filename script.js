@@ -3,6 +3,9 @@ let numRows = 0;
 let numCols = 0;
 let colorSelected; 
 
+
+
+
 // Add a row
 function addR() {
     let table = document.getElementById("grid"); // Replace this line with your code.
@@ -17,7 +20,7 @@ function addR() {
         }
     }
     numRows++;
-    console.log(numRows);
+    addOnclick();
 }
 
 // Add a column
@@ -28,7 +31,7 @@ function addC() {
         //table.insertRow(-1);
     }
     numCols++;
-    console.log(numCols);
+    addOnclick();
 }
 
 // Remove a row
@@ -48,8 +51,7 @@ function removeC() {
             table.rows[i].deleteCell(0);
             //table.insertRow(-1);
         }
-        numCols--;
-        console.log(numCols);  
+        numCols--;  
     }
   
 }
@@ -65,7 +67,9 @@ function selectColor(){
 
 // Fill all uncolored cells
 function fillU(){
-    alert("Clicked Fill All Uncolored"); // Replace this line with your code.
+    Array.from(document.getElementsByTagName("td")).filter(e => e.style.backgroundColor == 'white').forEach(e => {
+        e.style.backgroundColor = selectColor();
+    });
 }
 
 // Fill all cells
@@ -77,49 +81,26 @@ function fillAll(){
 
 // Clear all cells
 function clearAll(){
-    alert("Clicked Clear All"); // Replace this line with your code.
+    Array.from(document.getElementsByTagName("td")).forEach(e => {
+        e.style.backgroundColor = 'white';
+    }); 
 }
 
-//onclick color changer
-function clickColor(){
 
-}
 
 /*
-function addR() {
-    let table = document.getElementById("grid"); // Replace this line with your code.
-    // Insert a row at the end of the table
-    let newRow = table.insertRow(-1);
-
-    // Insert a cell in the row at index 0
-    let newCell = newRow.insertCell(0);
-    numRows++;
-    console.log(numRows);
+function clickColor(){
+    Array.from(document.getElementsByTagName("td")).forEach(e => {
+        e.onclick = function() {e.style.backgroundColor = selectColor()};
+    }); 
 }
 
-function addC() {
-    let table = document.getElementById("grid");
-    for (let i = 0; i < numRows; i++) {
-        table.rows[i].insertCell();
-        table.insertRow(-1);
-    }
-    numCols++;
-    console.log(numCols);
+function addOnclick() {
+    Array.from(document.getElementsByTagName("td")).forEach(e => {
+        e.onclick = function() {
+            clickColor();
+        }
+    });
 }
 
-function removeC() {
-    let table = document.getElementById("grid");
-    for (let i = 0; i < numRows; i++) {
-        table.rows[i].deleteCell(0);
-        //table.insertRow(-1);
-    }
-    numCols--;
-    console.log(numCols);
-}
-
-function removeR() {
-    let table = document.getElementById("grid");
-    table.deleteRow(0);
-    numRows--;
-}
 */
