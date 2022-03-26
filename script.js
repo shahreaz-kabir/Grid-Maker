@@ -33,27 +33,34 @@ function addC() {
 
 // Remove a row
 function removeR() {
-    let table = document.getElementById("grid");
-    table.deleteRow(0);
-    numRows--;   
+    if(numRows > 0) {
+        let table = document.getElementById("grid");
+        table.deleteRow(0);
+        numRows--; 
+    }  
 }
 
 // Remove a column
 function removeC() {
-    let table = document.getElementById("grid");
-    for (let i = 0; i < numRows; i++) {
-        table.rows[i].deleteCell(0);
-        //table.insertRow(-1);
+    if(numCols > 0) {
+        let table = document.getElementById("grid");
+        for (let i = 0; i < numRows; i++) {
+            table.rows[i].deleteCell(0);
+            //table.insertRow(-1);
+        }
+        numCols--;
+        console.log(numCols);  
     }
-    numCols--;
-    console.log(numCols);
   
 }
 
 // Set global variable for selected color
 function selectColor(){
     colorSelected = document.getElementById("selectedColorId").value;
-    console.log(colorSelected);
+    if(colorSelected == 'SELECT') {
+       colorSelected = 'white'; 
+    }
+    return colorSelected;
 }
 
 // Fill all uncolored cells
@@ -63,7 +70,9 @@ function fillU(){
 
 // Fill all cells
 function fillAll(){
-    alert("Clicked Fill All"); // Replace this line with your code.
+    Array.from(document.getElementsByTagName("td")).forEach(e => {
+        e.style.backgroundColor = selectColor();
+    });
 }
 
 // Clear all cells
