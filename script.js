@@ -3,6 +3,7 @@ let numRows = 0;
 let numCols = 0;
 let colorSelected; 
 
+
 //adds on click attribute to td elements
 function addOnclick() {
     //stores td elements in array and for each element call clickColor on click
@@ -12,6 +13,7 @@ function addOnclick() {
         }
     });
 }
+
 
 // Add a row
 function addR() {
@@ -73,8 +75,8 @@ function selectColor(){
 
 // Fill all uncolored cells
 function fillU(){
-    //stores td elements in an array, and filter elements that are uncolored
-    Array.from(document.getElementsByTagName("td")).filter(e => e.style.backgroundColor == 'white').forEach(e => {
+    //stores td elements in an array, and filter elements that are uncolored or empty
+    Array.from(document.getElementsByTagName("td")).filter(e => {return (e.style.backgroundColor == 'white' || e.style.backgroundColor == '')}).forEach(e => {
         e.style.backgroundColor = selectColor(); //for uncolored elements change background color
     });
 }
@@ -94,6 +96,7 @@ function clearAll(){
         e.style.backgroundColor = 'white';
     }); 
 }
+
 
 function clickColor(){
     //stores td elements in array and and applies onclick color change property to all
